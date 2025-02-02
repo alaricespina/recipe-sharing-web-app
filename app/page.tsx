@@ -1,49 +1,50 @@
 import Link from 'next/link';
+import { FaCompass, FaUpload, FaCalendar, FaGraduationCap, FaSearch, FaUserPlus } from 'react-icons/fa';
 
 export default function Home() {
   const features = [
     {
       title: 'Recipe Discovery',
       description: 'Find recipes that match your preferences and dietary needs',
-      href: '/recipe-discovery'
+      href: '/recipes/discovery'
     },
     {
       title: 'Share Your Recipes',
       description: 'Upload and share your favorite recipes with the community',
-      href: '/recipe-uploading'
+      href: '/recipes/upload'
     },
     {
       title: 'Meal Planning',
       description: 'Plan your meals and generate shopping lists automatically',
-      href: '/meal-planning-grocery-lists'
+      href: '/planning/planner'
     },
     {
       title: 'Cooking Tips',
       description: 'Learn new techniques and improve your cooking skills',
-      href: '/cooking-tips-techniques'
+      href: '/cooking/techniques'
     }
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 container-custom">
       {/* Hero Section */}
-      <div className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+      <div className="text-center section">
+        <h1 className="text-4xl font-bold tracking-tight text-gradient sm:text-6xl">
           Share Your Culinary Journey
         </h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600">
+        <p className="mt-6 text-lg leading-8 text-gray-300">
           Join our community of food lovers to discover, share, and create amazing recipes.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
-            href="/recipe-discovery"
-            className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
+            href="/recipes/discovery"
+            className="btn-primary"
           >
             Discover Recipes
           </Link>
           <Link
-            href="/user-registration"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            href="/auth/user-registration"
+            className="btn-secondary"
           >
             Create Account <span aria-hidden="true">→</span>
           </Link>
@@ -51,32 +52,39 @@ export default function Home() {
       </div>
 
       {/* Features Grid */}
-      <div className="mx-auto mt-16">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-16 section">
+        <div className="features-grid">
           {features.map((feature) => (
             <Link 
               key={feature.title}
               href={feature.href}
-              className="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              className="card"
             >
-              <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-              <p className="mt-2 text-gray-600">{feature.description}</p>
+              {feature.title === 'Recipe Discovery' && <FaSearch className="text-2xl mb-4 text-blue-400" />}
+              {feature.title === 'Share Your Recipes' && <FaUpload className="text-2xl mb-4 text-blue-400" />}
+              {feature.title === 'Meal Planning' && <FaCalendar className="text-2xl mb-4 text-blue-400" />}
+              {feature.title === 'Cooking Tips' && <FaGraduationCap className="text-2xl mb-4 text-blue-400" />}
+              <h3 className="text-lg font-semibold text-gray-100">{feature.title}</h3>
+              <p className="mt-2 text-gray-300">{feature.description}</p>
             </Link>
           ))}
         </div>
       </div>
 
       {/* Call to Action */}
-      <div className="text-center bg-blue-50 rounded-2xl p-8 mt-16">
-        <h2 className="text-2xl font-bold text-gray-900">Ready to start cooking?</h2>
-        <p className="mt-4 text-gray-600">
+      <div className="text-center bg-gray-800 rounded-2xl p-8 mt-16">
+        <h2 className="text-2xl font-bold text-gradient">Ready to start cooking?</h2>
+        <p className="mt-4 text-gray-300">
           Join our community and start sharing your recipes today.
         </p>
         <Link
-          href="/user-registration"
-          className="mt-6 inline-block rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
+          href="/auth/user-registration"
+          className="btn-primary mt-6"
         >
-          Get Started
+          <span className="flex items-center gap-2">
+            <FaUserPlus />
+            Get Started
+          </span>
         </Link>
       </div>
     </div>
