@@ -26,25 +26,27 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-12 container-custom">
+    <div className="w-full h-full space-y-12">
+      
       {/* Hero Section */}
-      <div className="text-center section">
-        <h1 className="text-4xl font-bold tracking-tight text-gradient sm:text-6xl">
+      <div className="w-full h-screen flex flex-col items-center justify-center">
+        <h1 className="text-8xl font-bold text-white">
           Share Your Culinary Journey
         </h1>
-        <p className="mt-6 text-lg leading-8 text-gray-300">
+        <p className="mt-4 text-lg text-gray-300">
           Join our community of food lovers to discover, share, and create amazing recipes.
         </p>
+
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
             href="/recipes/discovery"
-            className="btn-primary"
+            className="bg-blue-500 text-black px-6 py-3 rounded-md hover:bg-blue-900 hover:text-white transition-colors font-bold"
           >
             Discover Recipes
           </Link>
           <Link
             href="/auth/user-registration"
-            className="btn-secondary"
+            className="bg-green-500 text-black px-6 py-3 rounded-md hover:bg-green-900 hover:text-white transition-colors font-bold"
           >
             Create Account <span aria-hidden="true">→</span>
           </Link>
@@ -52,13 +54,12 @@ export default function Home() {
       </div>
 
       {/* Features Grid */}
-      <div className="mx-auto mt-16 section">
-        <div className="features-grid">
+      <div className="p-12 mt-16 w-full h-screen place-items-center grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
             <Link 
               key={feature.title}
               href={feature.href}
-              className="card"
+              className="bg-gray-800 rounded-lg shadow-lg p-6 transition-transform duration-200 hover:scale-[1.02]" 
             >
               {feature.title === 'Recipe Discovery' && <FaSearch className="text-2xl mb-4 text-blue-400" />}
               {feature.title === 'Share Your Recipes' && <FaUpload className="text-2xl mb-4 text-blue-400" />}
@@ -68,12 +69,11 @@ export default function Home() {
               <p className="mt-2 text-gray-300">{feature.description}</p>
             </Link>
           ))}
-        </div>
       </div>
 
       {/* Call to Action */}
       <div className="text-center bg-gray-800 rounded-2xl p-8 mt-16">
-        <h2 className="text-2xl font-bold text-gradient">Ready to start cooking?</h2>
+        <h2 className="text-2xl font-bold text-blue-600">Ready to start cooking?</h2>
         <p className="mt-4 text-gray-300">
           Join our community and start sharing your recipes today.
         </p>
